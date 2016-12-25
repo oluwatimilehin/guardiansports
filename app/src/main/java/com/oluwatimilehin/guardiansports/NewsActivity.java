@@ -15,6 +15,7 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ListView list = (ListView) findViewById(R.id.list);
         mAdapter = new NewsAdapter(this, new ArrayList<News>());
         list.setAdapter(mAdapter);
