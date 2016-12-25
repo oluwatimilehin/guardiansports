@@ -34,11 +34,12 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date);
 
         String dateString = currentNews.getDate();
+
         String[] dateSplit = dateString.split("T");
         String dateStart = dateSplit[0];
         String[] secondDateSplit = dateSplit[1].split("Z");
         String dateEnd = secondDateSplit[0];
-        String date = dateStart + " " +dateEnd ;
+        String date = dateStart + ", " +dateEnd ;
 
         dateTextView.setText(date);
 
