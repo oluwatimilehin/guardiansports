@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Guardian Sports</string>
+    <string name="empty_text_view">No news found.</string>
+    <string name="no_network">No internet connection</string>
 </resources>
