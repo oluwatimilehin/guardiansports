@@ -1,5 +1,7 @@
 package com.oluwatimilehin.guardiansports;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +31,8 @@ public class QueryUtils {
 
         try {
             JSONObject parser = new JSONObject(makeNetworkRequest(mUrl));
-            JSONArray results = parser.getJSONArray("results");
+            JSONObject objParser = parser.getJSONObject("response");
+            JSONArray results = objParser.getJSONArray("results");
             for(int i = 0; i < results.length(); i ++){
                 JSONObject parse = results.getJSONObject(i);
                 String headline = parse.getString("webTitle");
@@ -41,6 +44,7 @@ public class QueryUtils {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.e("QueryUtils", "Problem parsing the JSOn");
         }
         return  news;
     }
@@ -71,6 +75,7 @@ public class QueryUtils {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("QueryUtils", "Problem making HTTP request");
         }
         return jsonResponse;
     }
