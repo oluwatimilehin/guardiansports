@@ -2,12 +2,15 @@ package com.oluwatimilehin.guardiansports;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -29,6 +32,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         ListView list = (ListView) findViewById(R.id.list);
         mAdapter = new NewsAdapter(this, new ArrayList<News>());
         list.setAdapter(mAdapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(mAdapter.getItem(position).getUrl()));
+                startActivity(i);
+            }
+        });
 
 
         emptyTextView = (TextView) findViewById(R.id.empty_text_view);
