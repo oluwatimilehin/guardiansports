@@ -44,7 +44,7 @@ public class QueryUtils {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e("QueryUtils", "Problem parsing the JSOn");
+            Log.e("QueryUtils", "Problem parsing the JSON");
         }
         return  news;
     }
